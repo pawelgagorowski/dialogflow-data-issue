@@ -3,7 +3,7 @@
 const { app } = require('./intents');
 
 exports.handler = function(event, context, callback) {
-  
+
   let data = event.body ? event.body : event;
 
   app.handler(data, {}).then((res) => {
@@ -14,7 +14,6 @@ exports.handler = function(event, context, callback) {
         return callback(null, res.body);
       }
   }).catch((e) => {
-     return callback(null, {`There was an error ${e}`};
+     return callback(null, {"fulfillmentText": `There was an error \n${e}`})
     });
   };
-}
